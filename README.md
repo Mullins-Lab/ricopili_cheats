@@ -7,7 +7,7 @@ RICOPILI errors we've run into and how to fix them. This is for the version of R
 
    problem: there are snp IDs that contain "#" and R is reading this as a comment and can't properly read the "nofi_yourdata.lmiss" file.  
 
-   solution: make a couple of changes to the rep_qc2_14 script 
+   solution: make a couple of changes to the rep_qc2_14 script in your rp_bin
 
    line 3370:
    ```
