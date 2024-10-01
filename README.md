@@ -48,4 +48,10 @@ RICOPILI errors we've run into and how to fix them. This is for the version of R
 
    solution: run the follow before launching the postimp module: `module add 2022; module add texlive/20230313-GCC-11.3.0`
 
+4. error: areator Error: No variants remaining after --extract.
+
+   problem: in my case, the areator step wasn't working for two cohorts because the columns were not in the correct ricopili order (chr and snp were switched)
+
+   solution: first culprits will be cohorts that weren't processed with ricopili and therefore may have misordered columns. fix the column order for those summary statistics and then everything should run okay.
+
 
