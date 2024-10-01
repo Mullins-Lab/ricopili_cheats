@@ -32,3 +32,10 @@ RICOPILI errors we've run into and how to fix them. This is for the version of R
 
 # Postimputation module
 
+1. error: Argument "ALL" isn't numeric in addition (+) at /home/user/apr2023_ricopili/ricopili/rp_bin/danerdir_6 line 772, <FILE> line 1.
+
+   problem: ricopili was having issues reading the PCs using the --coco ALL argument, not sure if this was a ricopili problem or maybe something with the formatting of the covariates file? but either way the below solution will work.
+
+   solution: instead of using `--coco ALL` need to use specific PCs like `--coco 1,2,3,4,5,6`
+
+
