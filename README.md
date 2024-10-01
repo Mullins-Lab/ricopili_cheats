@@ -1,5 +1,5 @@
 # RICOPILI troubleshooting
-RICOPILI errors we've run into and how to fix them. This is for the version of RICOPLI installed on Snellius according to [these instructions]().
+RICOPILI errors we've run into and how to fix them. This is for the version of RICOPLI installed on Snellius according to [these instructions](https://github.com/Mullins-Lab/snellius/blob/main/rico_install2.md).
 
 # Preimputation (QC) module
 
