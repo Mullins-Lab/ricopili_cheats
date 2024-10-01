@@ -38,4 +38,14 @@ RICOPILI errors we've run into and how to fix them. This is for the version of R
 
    solution: instead of using `--coco ALL` need to use specific PCs like `--coco 1,2,3,4,5,6`
 
+2. error: the `--onlymeta` flag appears to go past the meta-analysis and outputs figures, etc.
+
+   problem: this occurs when using the `--popname` flag in conjunction with the onlymeta option. it's not necessarily a problem, because you still get all the output you need, but you will also get extra output you didn't want. no "solution" provided since it technically runs everything okay, but just making a note of it here.
+
+3. error: pdfjam ERROR: LaTeX package everyshi.sty not installed (see the pdfpages manual)
+
+   problem: when snellius was updated, some latex package dependencies were lost
+
+   solution: run the follow before launching the postimp module: `module add 2022; module add texlive/20230313-GCC-11.3.0`
+
 
