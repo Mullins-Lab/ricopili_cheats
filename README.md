@@ -54,4 +54,8 @@ RICOPILI errors we've run into and how to fix them. This is for the version of R
 
    solution: first culprits will be cohorts that weren't processed with ricopili and therefore may have misordered columns. fix the column order for those summary statistics and then everything should run okay.
 
+5. error: llegal division by zero at /home/pgca1sui/apr2023_ricopili/ricopili/rp_bin/metaber7 line 1095, <META> line X.
 
+   problem: when using --nofilter flag alone, the INFO score filter was still being applied after gathering SNPs, so sometimes ending up with Neff=0
+
+   solution: combine all the filter flags to make sure absolutely no filtering occurs like `--info_th 0.0 --nofilter --no_neff_filter`
