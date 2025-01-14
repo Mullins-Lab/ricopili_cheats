@@ -1,6 +1,6 @@
 The [ricopili LOO GWAS module](https://docs.google.com/document/d/10UKUfX4wT9rP5zswH5SDR2Y1O2-wJVUw9mn4tSdaS-I/edit?tab=t.0) only works when using only indiviudal level data all run with RICOPILI. Here I outline instructions for how to run LOO GWAS when summary stats were used to run the meta-analysis (assuming you followed this method to run postimp_navi: https://docs.google.com/document/d/1o4bN_uLK4IEItXCSdeQkXfZwEpLuSCWlveJevRogi08/edit?tab=t.0#heading=h.4008addvumol).
 
-Run this code to set up the loo results directory:
+## Run this code to set up the loo results directory:
 
 ```
 ## go to the directory that you ran the meta-analysis in
@@ -26,7 +26,7 @@ done < ${results_name}
 ln -s ../resdaner
 ```
 
-Then you can create a script that will run all the LOO GWAS using this code: 
+## Then you can create a script that will run all the LOO GWAS using this code: 
 
 ```
 ## make list of sumstats
