@@ -22,6 +22,40 @@ while read line; do
   ln -s ../"$line"
 done < ${results_name}
 
-## 
+## make symbolic link to the chunked files
+ln -s ../resdaner
+```
+
+Then you can create a script that will run all the LOO GWAS using this code: 
+
+```
+## make list of sumstats
+IFS=$'\n' read -d '' -r -a sumstats < ${results_name}
+
+## make command file
+cmd_file="start_loo_weights.cmd"
+echo -n > "$cmd_file" || { echo "Error creating $cmd_file"; exit 1; }
+
+## loop over sumstats
+for loof in "${sumstats[@]}"; do
+    loof_cells=(${loof//_/ })  ## split on underscores
+    loof_sub="${loof_cells[0]}"  ## first component of the filename
+
+    ### Process results files ###
+    results_file="results_${identifier}.loo.no.${loof_sub}"
+    > "$results_file" || { echo "Error creating $results_file"; exit 1; }
+
+    for loo in "${sumstats[@]}"; do
+        loo_cells=(${loo//_/ })  ## split on underscores
+        loo_sub="${loo_cells[0]}"  ## first component of the filename
+        if [[ "$loof_sub" != "$loo_sub" ]]; then
+            echo "$loo" >> "$results_file"
+        fi
+    done
+
+    ### Generate weights command ###
+    echo "postimp_navi --out ${identifier}.loo.no.${loof_sub} --result $results_file --nolahunt --noldsc --gwclump" >> "$cmd_file"
+
+done
 
 ```
