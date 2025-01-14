@@ -22,8 +22,9 @@ while read line; do
   ln -s ../"$line"
 done < ${results_name}
 
-## make symbolic link to the chunked files
+## make symbolic link to the chunked files and reference
 ln -s ../resdaner
+ln -s ../reference_info
 ```
 
 ## Then you can create a script that will run all the LOO GWAS using this code: 
