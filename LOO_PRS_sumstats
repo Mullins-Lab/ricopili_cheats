@@ -1,0 +1,27 @@
+The [ricopili LOO GWAS module](https://docs.google.com/document/d/10UKUfX4wT9rP5zswH5SDR2Y1O2-wJVUw9mn4tSdaS-I/edit?tab=t.0) only works when using only indiviudal level data all run with RICOPILI. Here I outline instructions for how to run LOO GWAS when summary stats were used to run the meta-analysis (assuming you followed this method to run postimp_navi: https://docs.google.com/document/d/1o4bN_uLK4IEItXCSdeQkXfZwEpLuSCWlveJevRogi08/edit?tab=t.0#heading=h.4008addvumol).
+
+Run this code to set up the loo results directory:
+
+```
+## go to the directory that you ran the meta-analysis in
+cd /gpfs/work5/0/pgcdac/DWFV2CJb8Piv_0116_pgc_data/pgcdrc/sui/stage2_ready/wave1/si/afr/all
+
+## set a bash variable with the name of your original ricopili meta-analysis output (this should be what was supplied to the --out and --addout flags of postimp_navi)
+identifier=pgcsui_w1_si_afr_all7_20241106
+
+## now make the results directory
+results_name=results_${identifier}
+mkdir ${results_name}
+cd ${results_name}
+
+## now copy the dataset_dir file you used in the --results flag of the postimp_navi command and rename it
+cp ../dataset_dir ./${results_name}
+
+## make symbolic links to the sum stats files in dataset_dir
+while read line; do
+  ln -s ../"$line"
+done < ${results_name}
+
+## 
+
+```
