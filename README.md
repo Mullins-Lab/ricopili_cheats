@@ -44,17 +44,31 @@ RICOPILI errors we've run into and how to fix them. This is for the version of R
 
 3. error: pdfjam ERROR: LaTeX package everyshi.sty not installed (see the pdfpages manual)
 
+   OR: FAILED. The call to 'pdflatex' resulted in an error. Output file not written
+
    problem: when snellius was updated, some latex package dependencies were lost
 
-   solution: run the follow before launching the postimp module: `module add 2022; module add texlive/20230313-GCC-11.3.0`
+   solution: install your own version of latex using the code below (but replace '/home/pgca1sui/software' with the directory you want to install latex in)
 
-4. error: areator Error: No variants remaining after --extract.
+   ```
+   cd /home/pgca1sui/software ## replace directory name
+   wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+   zcat < install-tl-unx.tar.gz | tar xf -
+   cd install-tl-20250516
+   TEXLIVE_INSTALL_PREFIX=/home/pgca1sui/software/texlive/2025 ./install-tl --no-interaction ## replace directory name
+   export PATH=/home/pgca1sui/software/texlive/2025/2025/bin/x86_64-linux ## replace directory name
+   export MANPATH=/home/pgca1sui/software/texlive/2025/2025/texmf-dist/doc/man ## replace directory name
+   export INFOPATH=/home/pgca1sui/software/texlive/2025/2025/texmf-dist/doc/info ## replace directory name
+   source ~/.bashrc
+   ```
+
+5. error: areator Error: No variants remaining after --extract.
 
    problem: in my case, the areator step wasn't working for two cohorts because the columns were not in the correct ricopili order (chr and snp were switched)
 
    solution: first culprits will be cohorts that weren't processed with ricopili and therefore may have misordered columns. fix the column order for those summary statistics and then everything should run okay.
 
-5. error: metaber7 llegal division by zero at /home/pgca1sui/apr2023_ricopili/ricopili/rp_bin/metaber7 line 1095, <META> line X.
+6. error: metaber7 llegal division by zero at /home/pgca1sui/apr2023_ricopili/ricopili/rp_bin/metaber7 line 1095, <META> line X.
 
    problem: when using --nofilter flag alone, the INFO score filter was still being applied after gathering SNPs, so sometimes ending up with Neff=0
 
