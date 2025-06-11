@@ -56,7 +56,7 @@ RICOPILI errors we've run into and how to fix them. This is for the version of R
    zcat < install-tl-unx.tar.gz | tar xf -
    cd install-tl-20250516
    TEXLIVE_INSTALL_PREFIX=/home/pgca1sui/software/texlive/2025 ./install-tl --no-interaction ## replace directory name
-   export PATH=/home/pgca1sui/software/texlive/2025/2025/bin/x86_64-linux ## replace directory name
+   export PATH=/home/pgca1sui/software/texlive/2025/2025/bin/x86_64-linux:$PATH ## replace directory name
    export MANPATH=/home/pgca1sui/software/texlive/2025/2025/texmf-dist/doc/man ## replace directory name
    export INFOPATH=/home/pgca1sui/software/texlive/2025/2025/texmf-dist/doc/info ## replace directory name
    source ~/.bashrc
