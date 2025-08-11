@@ -73,3 +73,9 @@ RICOPILI errors we've run into and how to fix them. This is for the version of R
    problem: when using --nofilter flag alone, the INFO score filter was still being applied after gathering SNPs, so sometimes ending up with Neff=0
 
    solution: combine all the filter flags to make sure absolutely no filtering occurs like `--info_th 0.0 --nofilter --no_neff_filter`
+
+7. error: can't opendir : /gpfs/work5/0/prjs0917/sex_specific_gwas/data/sex_sumstat2/MDD/X_Chr/boma/daner_boma_chr23_sa_female/da_mdd_boma_eur_sr-qcx.females.hg19.ch.fl at /home/iisewon/apr2023_ricopili/ricopili/rp_bin/postimp_navi line 3417
+
+   problem: the reference_info file in the working directory was for the autosomes, but for sex-specific analyses ricopili needs the x chrom specific reference_info file
+
+   solution: replace the reference_info file with the x chrom reference_info file (example of this file: `//gpfs/work5/0/pgcdac/DWFV2CJb8Piv_0116_pgc_data/bip/wave3/v1/chr23/chr23_females/reference_info`)
